@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #16323a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #12bdb4;
+  --color-primary-strong: #08968f;
+  --color-secondary: #f8bd08;
+  --color-secondary-strong: #e5a900;
+  --color-accent: #3498d8;
+  --color-leaf: #8bc53f;
+  --color-coral: #ff6152;
+  --color-ink: #16323a;
+  --color-muted: #627783;
+  --color-mist: #eafafa;
+  --color-brand-line: #d6eeee;
+  --color-coral-wash: #fff0ee;
+  --color-sun-wash: #fff8dc;
+  --color-sky-wash: #eef8ff;
+  --font-sans: "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(18, 189, 180, 0.12), transparent 28rem),
+    radial-gradient(circle at 86% 18%, rgba(248, 189, 8, 0.13), transparent 28rem),
+    #ffffff;
+  color: var(--foreground);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: min(100% - 2rem, 1180px);
+}
+
+.brand-button {
+  background: linear-gradient(135deg, #12bdb4, #3498d8);
+  color: white;
+  box-shadow: 0 18px 42px rgba(18, 189, 180, 0.24);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.brand-button:hover {
+  filter: saturate(1.08);
+  box-shadow: 0 22px 52px rgba(18, 189, 180, 0.3);
+}
+
+.brand-rainbow-text {
+  background: linear-gradient(90deg, #12bdb4, #3498d8, #8bc53f, #f8bd08, #ff6152);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.launch-invitation {
+  animation: invitation-glow 3.6s ease-in-out infinite;
+}
+
+.opening-bubbles {
+  animation: opening-layer 4.9s ease forwards;
+}
+
+.opening-brand-caption {
+  animation: opening-caption 4.25s ease forwards;
+}
+
+.opening-bubble {
+  animation: bubble-rise var(--bubble-duration) ease-in forwards;
+  animation-delay: var(--bubble-delay);
+}
+
+@keyframes invitation-glow {
+  0%,
+  100% {
+    box-shadow: 0 22px 70px rgba(18, 189, 180, 0.22);
+  }
+
+  50% {
+    box-shadow: 0 28px 90px rgba(52, 152, 216, 0.26);
+  }
+}
+
+@keyframes opening-layer {
+  0%,
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes opening-caption {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.96);
+  }
+
+  20%,
+  68% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scale(1.04);
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.84);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 0.92;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--bubble-drift), -116vh, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
